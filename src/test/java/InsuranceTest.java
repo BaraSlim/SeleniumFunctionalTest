@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.*;
+
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 public class InsuranceTest {
     WebDriver driver;
     String baseURL;
-
 
     @Before     //метод выполнения перед каждым тестом
     public void beforeTest() {
@@ -30,12 +30,8 @@ public class InsuranceTest {
 
     @Test
     public void testInsurance() {
-        driver.findElement(By.xpath("//a[contains (text(), 'Меню') and contains (@class, 'hidden-xs')]")).click();
-//        WebElement menu = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains (text(), 'Меню')]")));
-//        menu.click();
-
-
-        driver.findElement(By.xpath("//div[contains(@class, 'rgs-main-menu-category')]//a[contains(text(),'ДМС')]")).click();
+        driver.findElement(By.xpath("//a[contains (text(), 'Меню') and contains (@class, 'hidden-xs')]")).click();          //провалиться в меню
+        driver.findElement(By.xpath("//div[contains(@class, 'rgs-main-menu-category')]//a[contains(text(),'ДМС')]")).click();       //выбрать пункт ДМС из меню
         WebElement sendTicketBtn = driver.findElement(By.xpath("//*[contains(text(),'Отправить заявку')][contains (@class, 'btn')]"));
         Wait<WebDriver> wait = new WebDriverWait(driver, 5, 1000);  //явное ожидание появления кнопки
         wait.until(ExpectedConditions.visibilityOf(sendTicketBtn)).click();     //оджидать появления кнопки отправки заявки
@@ -43,8 +39,8 @@ public class InsuranceTest {
         wait.until(ExpectedConditions.visibilityOf(ticketsForm));   //ожидает появления формы заполнения заявки
         Assert.assertEquals("Значение title не соответствует ожидаемому", "Заявка на добровольное медицинское страхование", ticketsForm.getText());
 
-        fillField(By.name("FirstName"), "Petro");       //Использование метода для заполнения поля формы
         fillField(By.name("LastName"), "Pupkin");       //
+        fillField(By.name("FirstName"), "Petro");       //Использование метода для заполнения поля формы
         fillField(By.name("MiddleName"), "Pupkin");     //
 
         new Select(driver.findElement(By.xpath("//*[contains (@name, 'Region')]"))).selectByVisibleText("Чукотский АО");     //выбор элемента из выпадающего списка
