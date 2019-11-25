@@ -7,9 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.*;
-import sun.management.snmp.jvmmib.JVM_MANAGEMENT_MIBOidTable;
-
-import java.beans.Visibility;
 import java.util.concurrent.TimeUnit;
 
 /**
