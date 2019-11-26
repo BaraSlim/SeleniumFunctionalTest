@@ -1,7 +1,4 @@
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,6 +26,7 @@ public class InsuranceTest {
     }
 
     @Test
+    @Ignore
     public void testInsurance() {
         driver.findElement(By.xpath("//a[contains (text(), 'Меню') and contains (@class, 'hidden-xs')]")).click();          //провалиться в меню
         driver.findElement(By.xpath("//div[contains(@class, 'rgs-main-menu-category')]//a[contains(text(),'ДМС')]")).click();       //выбрать пункт ДМС из меню
